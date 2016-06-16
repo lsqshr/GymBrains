@@ -114,8 +114,8 @@ class Brain(object):
 
         for e in range(config['maxepoch']): # Episode
             s0 = self.env.reset()
-            score = 0
-            done = False
+            # score = 0
+            # done = False
 
             for i in range(config['maxstep']): # Step
             # while not done:
@@ -126,10 +126,10 @@ class Brain(object):
                 _, out1 = self._act(s1)
                 q1 = out1.max()
 
-                if done and i < env.spec.timestep_limit:
-                    r0 = 1000 # If make it, send a big reward
-                score += r0
-                r0 += score / 100 # Reward will be the accumulative score divied by 100
+                # if done and i < env.spec.timestep_limit:
+                #     r0 = 1000 # If make it, send a big reward
+                # score += r0
+                # r0 += score / 100 # Reward will be the accumulative score divied by 100
 
                 if self._store_ctr % self.config['store_every'] is 0:
                     self._store((s0, a0, r0, s1, out0)) # Saving out0 for batch training
