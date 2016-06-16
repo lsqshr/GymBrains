@@ -118,7 +118,6 @@ class Brain(object):
             # done = False
 
             for i in range(config['maxstep']): # Step
-            # while not done:
                 print('step: %d score:%d' % (i, score), end='\r')
                 a0, out0 = self._act(s0)
                 q0 = out0.max()
@@ -126,6 +125,7 @@ class Brain(object):
                 _, out1 = self._act(s1)
                 q1 = out1.max()
 
+                # Little trick to play episodic game like acrobot, commented out for brievity
                 # if done and i < env.spec.timestep_limit:
                 #     r0 = 1000 # If make it, send a big reward
                 # score += r0
